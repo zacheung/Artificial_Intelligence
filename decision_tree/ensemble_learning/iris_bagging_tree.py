@@ -39,7 +39,7 @@ y_predict_prob = bag_clf.predict_proba(X_test)
 # print(y_predict, y_predict_prob)
 print('bagging', accuracy_score(y_test, y_predict))
 
-# oob，oob_score是否使用袋外样本来评估泛化精度。
+# oob，oob_score是否使用袋外样本来评估泛化精度
 bag_clf = BaggingClassifier(DecisionTreeClassifier(), n_estimators=500, bootstrap=True, n_jobs=1, oob_score=True)
 bag_clf.fit(X_train, y_train)
 print(bag_clf.oob_score_)  # 只有当“oob_score”为True时，此属性才存在。用OOB获得的数据集得分
