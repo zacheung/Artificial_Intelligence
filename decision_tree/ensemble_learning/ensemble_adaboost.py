@@ -62,7 +62,7 @@ for i, n, c in zip(range(2), class_names, plot_colors):
 
 x1, x2, y1, y2 = plt.axis()  # 返回x轴和y轴的范围
 plt.axis((x1, x2, y1, y2 * 1.2))  # 设置坐标轴的范围
-plt.legend()
+plt.legend(loc='upper right')
 plt.xlabel('Score')
 plt.ylabel('Samples')
 plt.title('Decision Scores')
