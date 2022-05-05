@@ -31,7 +31,7 @@ for clf in (log_clf, rnd_clf, svm_clf, voting_clf):  # 比较每种算法的预�
     y_predict = clf.predict(X_test)
     print(clf.__class__.__name__, accuracy_score(y_test, y_predict))
 
-# max_samples从X中提取的样本数，用于训练每个base estimator。bootstrap是否抽取替换样本
+# max_samples从X中提取的样本数，用于训练每个base estimator。bootstrap为True表示可重复抽样，为False表示不放回抽样
 bag_clf = BaggingClassifier(DecisionTreeClassifier(), n_estimators=10, max_samples=1.0, bootstrap=True, n_jobs=1)
 bag_clf.fit(X_train, y_train)
 y_predict = bag_clf.predict(X_test)
@@ -39,7 +39,7 @@ y_predict_prob = bag_clf.predict_proba(X_test)
 # print(y_predict, y_predict_prob)
 print('bagging', accuracy_score(y_test, y_predict))
 
-# oob，oob_score是否使用袋外样本来估计泛化误差。
+# oob，oob_score是否使用袋外样本来评估泛化精度。
 bag_clf = BaggingClassifier(DecisionTreeClassifier(), n_estimators=500, bootstrap=True, n_jobs=1, oob_score=True)
 bag_clf.fit(X_train, y_train)
 print(bag_clf.oob_score_)  # 只有当“oob_score”为True时，此属性才存在。用OOB获得的数据集得分
