@@ -26,7 +26,8 @@ def restore_image(cb, cluster, shape):
     for r in range(row):
         for c in range(col):
             image[r, c] = cb[cluster[index]]
-            index += 1
+            index += 1  # 1090*1100=1199000
+
     return image
 
 
@@ -71,6 +72,7 @@ show_scatter(image_v)
 N = image_v.shape[0]  # 图像像素总数
 idx = np.random.randint(0, N, size=1000)  # (1000,)
 image_sample = image_v[idx]  # 随机取image_v里的数据
+
 num_vq = 20
 model = KMeans(num_vq)
 model.fit(image_sample)
